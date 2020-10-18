@@ -1,0 +1,22 @@
+ccl;clear all;close all;
+h=0.001;
+a=0;
+b=40;
+n=(b-a)/h;
+[t,ya]=ode45(@luolunz,[a,b],[12 4 0]);
+subplot(221)
+plot(t,ya(:,1))
+subplot(222)
+plot(t,ya(:,2))
+subplot(223)
+plot(t,ya(:,3))
+subplot(224)
+plot3(ya(:,1),ya(:,2),ya(:,3))
+grid on
+
+function dy=luolunz(t,y)
+p=16;ra=4;b=45;
+dy=[p*(y(2)-y(1));
+    b*y(1)-y(1)*y(3)-y(2);
+    y(1)*y(2)-ra*y(3)];
+end
